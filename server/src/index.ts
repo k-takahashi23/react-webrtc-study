@@ -1,4 +1,7 @@
 import express from 'express'
+import { Server } from 'socket.io'
+
+const portServer = 3001;
 
 const app: express.Express = express()
 
@@ -12,10 +15,25 @@ app.use((_req: express.Request, res: express.Response, next: express.NextFunctio
   next();
 })
 
-app.listen(3001, () => {
-  console.log("Start on port 3001.")
-})
 
 app.get('/', (_req: express.Request, res: express.Response) => {
   res.send(JSON.stringify('Hello World!'))
+})
+
+const server = app.listen(portServer, () => {
+  console.log(`Start server on port ${portServer}.`)
+})
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+  }
+});
+
+io.on('connection', socket => {
+  console.log(socket.id);
+
+  socket.on('message', (data) => {
+    console.log(data)
+  });
 })
