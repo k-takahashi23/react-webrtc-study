@@ -88,13 +88,13 @@ const IndexPage = (): JSX.Element => {
   return (
     <>
       <div>
-        <button onClick={handleClick}>Call</button>
+        <button style={{ width: '100px', height: '50px' }} onClick={handleClick}>Call</button>
         <div style={{ width: '100%', display: 'inline-flex', 'justifyContent': 'center', 'alignItems': 'center' }}>
           <div style={{ width: '50%' }}>
             <h2>You</h2>
             <div style={{ width: '100%' }}>
               <video
-                style={{ margin: '10%', width: '80%' }}
+                style={{ marginLeft: '10%', width: '80%' }}
                 ref={localVideoRef}
                 playsInline
                 autoPlay
@@ -106,7 +106,7 @@ const IndexPage = (): JSX.Element => {
             <h2>Friend</h2>
             <div>
               <video
-                style={{ margin: '10%', width: '80%' }}
+                style={{ marginLeft: '10%', width: '80%' }}
                 ref={remoteVideoRef}
                 playsInline
                 autoPlay
