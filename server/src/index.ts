@@ -12,6 +12,10 @@ app.use((_req: express.Request, res: express.Response, next: express.NextFunctio
   next();
 })
 
-app.listen(3000, () => {
-  console.log("Start on port 3000.")
+app.listen(3001, () => {
+  console.log("Start on port 3001.")
+})
+
+app.get('/', (_req: express.Request, res: express.Response) => {
+  res.send(JSON.stringify('Hello World!'))
 })

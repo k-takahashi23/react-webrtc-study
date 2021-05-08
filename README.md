@@ -16,6 +16,12 @@ $ yarn install
 $ yarn client
 ```
 
+`http://localhost:3000/`
+
 ### Server
 
-TODO
+```bash
+$ yarn server
+```
+
+`http://localhost:3001/`

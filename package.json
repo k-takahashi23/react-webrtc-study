@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "install": "(cd ./client && yarn) && (cd ./server && yarn)",
-    "client": "cd ./client && yarn dev"
+    "client": "cd ./client && yarn dev",
+    "server": "cd ./server && ts-node ./src/index.ts"
   },
   "license": "MIT"
 }
