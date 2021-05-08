@@ -90,30 +90,34 @@ const IndexPage = (): JSX.Element => {
       <div>
         <button onClick={handleClick}>Call</button>
         <div style={{ width: '100%', display: 'inline-flex', 'justifyContent': 'center', 'alignItems': 'center' }}>
-          <div style={{ width: '50%', display: 'inline-flex', 'justifyContent': 'center', 'alignItems': 'center' }}>
+          <div style={{ width: '50%' }}>
             <h2>You</h2>
-            <video
-              style={{ margin: '30px', width: '300px', height: '300px', maxWidth: '100%' }}
-              ref={localVideoRef}
-              playsInline
-              autoPlay
-              muted
-            />
+            <div style={{ width: '100%' }}>
+              <video
+                style={{ margin: '10%', width: '80%' }}
+                ref={localVideoRef}
+                playsInline
+                autoPlay
+                muted
+              />
+            </div>
           </div>
-          <div style={{ width: '50%', display: 'inline-flex', 'justifyContent': 'center', 'alignItems': 'center' }}>
+          <div style={{ width: '50%' }}>
             <h2>Friend</h2>
-            <video
-              style={{ margin: '30px', width: '300px', height: '300px', maxWidth: '100%' }}
-              ref={remoteVideoRef}
-              playsInline
-              autoPlay
-            />
-            <audio
-              style={{ display: 'none' }}
-              ref={remoteAudioRef}
-              controls
-              autoPlay
-            />
+            <div>
+              <video
+                style={{ margin: '10%', width: '80%' }}
+                ref={remoteVideoRef}
+                playsInline
+                autoPlay
+              />
+              <audio
+                style={{ display: 'none' }}
+                ref={remoteAudioRef}
+                controls
+                autoPlay
+              />
+            </div>
           </div>
         </div>
       </div>
