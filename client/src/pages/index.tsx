@@ -6,6 +6,11 @@ let remoteStream: MediaStream;
 let localPeerConnection: RTCPeerConnection;
 let remotePeerConnection: RTCPeerConnection;
 
+const mediaStreamConstraints: MediaStreamConstraints = {
+  audio: true,
+  video: true,
+};
+
 const offerOptions: RTCOfferOptions = {
   offerToReceiveAudio: true,
   offerToReceiveVideo: true,
@@ -19,7 +24,7 @@ const IndexPage = (): JSX.Element => {
   const connectVideo = async () => {
     try {
       // Get localStream by getUserMedia()
-      localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+      localStream = await navigator.mediaDevices.getUserMedia(mediaStreamConstraints);
 
       // Set videoRef
       if (localVideoRef.current) {
