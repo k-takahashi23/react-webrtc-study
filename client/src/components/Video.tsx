@@ -11,7 +11,6 @@ type State = {
 
 export class Video extends React.Component<Props, State> {
   private socket: SocketIOClient.Socket;
-  // TODO: Initialize 周りのエラーが出てるので直す
   private peerConnection: RTCPeerConnection;
   private localStream: MediaStream;
   private remoteStream: MediaStream;
