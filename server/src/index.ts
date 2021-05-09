@@ -15,11 +15,6 @@ app.use((_req: express.Request, res: express.Response, next: express.NextFunctio
   next();
 })
 
-
-app.get('/', (_req: express.Request, res: express.Response) => {
-  res.send(JSON.stringify('Hello World!'))
-})
-
 const server = app.listen(portServer, () => {
   console.log(`Start server on port ${portServer}.`)
 })
@@ -31,9 +26,20 @@ const io = new Server(server, {
 });
 
 io.on('connection', socket => {
-  console.log(socket.id);
+  console.log('socket.id:' + socket.id);
 
-  socket.on('message', (data) => {
-    console.log(data)
-  });
+  socket.on('SEND_OFFER', ({ offer }: { offer: RTCSessionDescriptionInit }) => {
+    console.log('SEND_OFFER!', socket.id);
+    socket.broadcast.emit('RECEIVE_OFFER', { id: socket.id, offer });
+  })
+
+  socket.on('SEND_ANSWER', ({ id, answer }: { id: string, answer: RTCSessionDescriptionInit }) => {
+    console.log('SEND_ANSWER!', socket.id);
+    socket.broadcast.emit('RECEIVE_ANSWER', { id, answer });
+  })
+
+  socket.on('SNED_ICE', ({ ice }: { ice: RTCIceCandidate }) => {
+    console.log('SEND_ICE!')
+    socket.broadcast.emit('RECEIVE_ICE', { ice });
+  })
 })
