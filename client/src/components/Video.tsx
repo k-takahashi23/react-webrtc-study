@@ -105,8 +105,8 @@ export class Video extends React.Component<Props, State> {
     this.socket.emit('SEND_OFFER', { offer });
   }
   
-  onRecieveOffer = async ({ id, offer }: { id: string, offer: RTCSessionDescriptionInit }) => {
-    console.log('RECEIVE_OFFER! id=', id);
+  onRecieveOffer = async ({ offer }: { offer: RTCSessionDescriptionInit }) => {
+    console.log('RECEIVE_OFFER!');
 
     // Offer を受け取ってリモートにセット
     const receivedOffer = new RTCSessionDescription(offer);
@@ -125,11 +125,11 @@ export class Video extends React.Component<Props, State> {
     await this.peerConnection.setLocalDescription(answer);
 
     // Answer を返す
-    this.socket.emit('SEND_ANSWER', { id, answer });
+    this.socket.emit('SEND_ANSWER', { answer });
   };
 
-  onRecieveAnswer = async ({ id, answer }: { id: string, answer: RTCSessionDescriptionInit }) => {
-    console.log('RECEIVE_ANSWER! id=', id)
+  onRecieveAnswer = async ({ answer }: { answer: RTCSessionDescriptionInit }) => {
+    console.log('RECEIVE_ANSWER!')
 
     // Answer を受け取ってリモートにセット
     const receivedAnswer = new RTCSessionDescription(answer)
