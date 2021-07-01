@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  server:
+    container_name: react-webrtc-study-server
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    ports:
+      - 3001:3001
+    working_dir: /app/server
+    command: npm run start
+  client:
+    container_name: react-webrtc-study-client
+    build: 
+      context: .
+      dockerfile: ./client/Dockerfile
+    ports:
+      - 3000:3000
+    working_dir: /app/client
+    command: npm run dev

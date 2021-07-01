@@ -2,7 +2,8 @@
   "name": "react-webrtc-study-server",
   "version": "1.0.0",
   "scripts": {
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "start": "ts-node ./src/index.ts"
   },
   "dependencies": {
     "express": "^4.17.1",
